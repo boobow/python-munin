@@ -1,8 +1,8 @@
 #!/usr/local/bin/python
 
-from munin.jboss import MuninJBossPlugin
+from munin.tomcat import MuninTomcatPlugin
 
-class MuninJBossMemoryPlugin(MuninJBossPlugin):
+class MuninJBossMemoryPlugin(MuninTomcatPlugin):
     
     title = 'JVM Memory'
     vlabel = 'RAM Memory in MB'
