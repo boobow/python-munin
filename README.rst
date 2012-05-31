@@ -8,7 +8,7 @@ various services including PostgreSQL, Memcached, and Nginx.
 
 
 Tomcat plugin
-===
+==========
 Tomcat plugin works for Apache Tomcat, JBoss and Red5.
 
 For Red5, you should create a new app into webapps named "status" with a file "status.jsp".
