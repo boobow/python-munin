@@ -1,5 +1,5 @@
 
-Description
+About python-munin
 ===========
 
 This library provides helper classes for writing plugins for the server
