@@ -4,19 +4,19 @@ from munin.jboss import MuninJBossPlugin
 
 class MuninJBossMemoryPlugin(MuninJBossPlugin):
     
-    title = 'JBoss Memory'
-    vlabel = 'Memory'
+    title = 'JVM Memory'
+    vlabel = 'RAM Memory in MB'
     args = '--base 1000'
 
     fields = (
         ('max', dict(
-            label = 'Total memory',
+            label = 'Max memory',
             type = 'GAUGE',
             draw = 'LINE2',
             min = '0',
         )),
         ('total', dict(
-            label = 'Used memory',
+            label = 'Total memory',
             type = 'GAUGE',
             draw = 'LINE2',
             min = '0',

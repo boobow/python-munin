@@ -3,14 +3,14 @@ import urllib2, urllib
 from xml.etree import ElementTree
 from munin import MuninPlugin
 
-class MuninJBossPlugin(MuninPlugin):
+class MuninTomcatPlugin(MuninPlugin):
     
     _status_xml = None
-    category = 'JBoss'
+    category = 'Tomcat'
     
     def __init__(self):
         super(MuninPlugin, self).__init__()
-        self._url = os.environ.get('JBOSS_STATUS_URL') or "http://localhost:8080/status"
+        self._url = os.environ.get('TOMCAT_STATUS_URL') or "http://localhost:8080/manager/status"
 
     def _get_status(self):
         req_params = urllib.urlencode({'XML': 'true'})
