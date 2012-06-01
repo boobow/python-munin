@@ -11,6 +11,7 @@ class MuninTomcatPlugin(MuninPlugin):
     def __init__(self):
         super(MuninPlugin, self).__init__()
         self._url = os.environ.get('TOMCAT_STATUS_URL') or "http://localhost:8080/manager/status"
+        self.category = os.environ.get('TOMCAT_CATEGORY') or self.category
 
     def _get_status(self):
         req_params = urllib.urlencode({'XML': 'true'})
