@@ -2,7 +2,7 @@
 
 from munin.tomcat import MuninTomcatPlugin
 
-class MuninJBossMemoryPlugin(MuninTomcatPlugin):
+class MuninTomcatMemoryPlugin(MuninTomcatPlugin):
     
     title = 'JVM Memory'
     vlabel = 'RAM Memory in MB'
@@ -39,4 +39,4 @@ class MuninJBossMemoryPlugin(MuninTomcatPlugin):
         )
         
 if __name__ == '__main__':
-    MuninJBossMemoryPlugin().run()
+    MuninTomcatMemoryPlugin().run()
