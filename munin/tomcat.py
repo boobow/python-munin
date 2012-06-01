@@ -11,7 +11,7 @@ class MuninTomcatPlugin(MuninPlugin):
     def __init__(self):
         super(MuninPlugin, self).__init__()
         self._url = os.environ.get('TOMCAT_STATUS_URL') or "http://localhost:8080/manager/status"
-        self._user = os.environ.get('TOMCAT_USER') or None
+        self._user = os.environ.get('TOMCAT_USERNAME') or None
         self._password = os.environ.get('TOMCAT_PASSWORD') or None
         self.category = os.environ.get('TOMCAT_CATEGORY') or self.category
     
