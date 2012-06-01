@@ -11,14 +11,24 @@ class MuninTomcatPlugin(MuninPlugin):
     def __init__(self):
         super(MuninPlugin, self).__init__()
         self._url = os.environ.get('TOMCAT_STATUS_URL') or "http://localhost:8080/manager/status"
+        self._user = os.environ.get('TOMCAT_USER') or None
+        self._password = os.environ.get('TOMCAT_PASSWORD') or None
         self.category = os.environ.get('TOMCAT_CATEGORY') or self.category
-
+    
     def _get_status(self):
-        req_params = urllib.urlencode({'XML': 'true'})
-        req_url = "%s?%s" % (self._url, req_params)
+        if self._user is not None and self._password is not None:
+            realm = urllib2.HTTPPasswordMgrWithDefaultRealm()
+            realm.add_password(None, self._url, self._user, self._password)
+            handler = urllib2.HTTPBasicAuthHandler(realm)
+            opener = urllib2.build_opener(handler)
+        else:
+            opener = urllib2.build_opener()
+        
+        params = urllib.urlencode({'XML': 'true'})
+        full_url = "%s?%s" % (self._url, params)
 
-        resp = urllib2.urlopen(req_url)
-        return resp.read()
+        response = opener.open(full_url)
+        return response.read()
 
     def _get_status_xml(self):
         return ElementTree.XML(self._get_status())
